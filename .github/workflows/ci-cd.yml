@@ -52,7 +52,7 @@ jobs:
         cd HelloWorldApp
         dotnet test --no-build --verbosity normal
 
-  deploy:
+deploy:
     runs-on: windows-latest
     needs: test
     steps:
@@ -71,4 +71,5 @@ jobs:
         body: "The recent CI/CD pipeline failed. Please check the logs for details."
         to: duanevanappel@gmail.com
         from: ${{ secrets.GMAIL_USERNAME }}
+
 
