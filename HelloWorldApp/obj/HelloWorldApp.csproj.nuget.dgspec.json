@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\OneDrive\\Desktop\\DevWerk\\DuanTaak\\HelloWorldApp.Tests\\HelloWorldApp.Tests.csproj": {}
+    "C:\\Users\\user\\OneDrive\\Desktop\\DevWerk\\DuanTaak\\HelloWorldApp\\HelloWorldApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\OneDrive\\Desktop\\DevWerk\\DuanTaak\\HelloWorldApp.Tests\\HelloWorldApp.Tests.csproj": {
+    "C:\\Users\\user\\OneDrive\\Desktop\\DevWerk\\DuanTaak\\HelloWorldApp\\HelloWorldApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\OneDrive\\Desktop\\DevWerk\\DuanTaak\\HelloWorldApp.Tests\\HelloWorldApp.Tests.csproj",
-        "projectName": "HelloWorldApp.Tests",
-        "projectPath": "C:\\Users\\user\\OneDrive\\Desktop\\DevWerk\\DuanTaak\\HelloWorldApp.Tests\\HelloWorldApp.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\user\\OneDrive\\Desktop\\DevWerk\\DuanTaak\\HelloWorldApp\\HelloWorldApp.csproj",
+        "projectName": "HelloWorldApp",
+        "projectPath": "C:\\Users\\user\\OneDrive\\Desktop\\DevWerk\\DuanTaak\\HelloWorldApp\\HelloWorldApp.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\OneDrive\\Desktop\\DevWerk\\DuanTaak\\HelloWorldApp.Tests\\obj\\",
+        "outputPath": "C:\\Users\\user\\OneDrive\\Desktop\\DevWerk\\DuanTaak\\HelloWorldApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -48,24 +48,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.NET.Test.Sdk": {
-              "target": "Package",
-              "version": "[17.8.0, )"
-            },
-            "coverlet.collector": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "xunit": {
-              "target": "Package",
-              "version": "[2.5.3, )"
-            },
-            "xunit.runner.visualstudio": {
-              "target": "Package",
-              "version": "[2.5.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
