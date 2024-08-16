@@ -42,9 +42,8 @@ jobs:
     if: failure()  # This step runs only if the build fails
 
     steps:
-      - name: Send Slack notification
+      - name: Send failure notification to Slack
         uses: slackapi/slack-github-action@v1
         with:
-          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          channel: '#general'  # Change this to your Slack channel
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}  # This should match the secret name you created
           text: "The CI/CD pipeline has failed. Please check the logs for more details."
