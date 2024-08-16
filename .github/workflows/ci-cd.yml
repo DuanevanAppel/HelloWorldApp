@@ -52,7 +52,7 @@ jobs:
         cd HelloWorldApp
         dotnet test --no-build --verbosity normal
 
-   deploy:
+  deploy:
         runs-on: windows-latest
         needs: test
         steps:
