@@ -10,40 +10,45 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+    runs-on: windows-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
+    - name: List files in root directory
+      run: dir
+    - name: Change to project directory and list files
+      run: |
+        cd HelloWorldApp
+        dir
+    - name: Restore dependencies
+      run: |
+        cd HelloWorldApp
+        dotnet restore
+    - name: Build
+      run: |
+        cd HelloWorldApp
+        dotnet build --configuration Release --no-restore
+    - name: Verify .NET SDK version
+      run: dotnet --version
 
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '7.x'
-
-      - name: Install dependencies
-        run: dotnet restore
-        working-directory: ./HelloWorldApp
-
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-        working-directory: ./HelloWorldApp
-
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
-        working-directory: ./HelloWorldApp
-
-      - name: Deploy
-        run: echo "Deploy stage - Add your deploy commands here"
-
-  notify:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: windows-latest
     needs: build
-    if: failure()  # This step runs only if the build fails
-
     steps:
-      - name: Send failure notification to Slack
-        uses: slackapi/slack-github-action@v1
-        with:
-          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}  # This should match the secret name you created
-          text: "The CI/CD pipeline has failed. Please check the logs for more details."
+    - uses: actions/checkout@v3
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
+    - name: Change to project directory and list files
+      run: |
+        cd HelloWorldApp
+        dir
+    - name: Run unit tests
+      run: |
+        cd HelloWorldApp
+        dotnet test --no-build --verbosity normal
+
