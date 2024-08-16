@@ -59,8 +59,8 @@ jobs:
         - name: Deploy application
           run: |
             echo "Deployment logic goes here"
-        - name: Send email notification on failure
-          if: failure()
+        - name: Send email notification 
+          if: aways()
           uses: dawidd6/action-send-mail@v3
           with:
             server_address: smtp.gmail.com
