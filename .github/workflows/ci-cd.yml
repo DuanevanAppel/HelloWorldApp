@@ -59,17 +59,19 @@ jobs:
         - name: Deploy application
           run: |
             echo "Deployment logic goes here"
-        - name: Send email notification 
-          if: aways()
+        - name: Send email notification
+          if: always()
           uses: dawidd6/action-send-mail@v3
           with:
             server_address: smtp.gmail.com
             server_port: 465
             username: ${{ secrets.GMAIL_USERNAME }}
             password: ${{ secrets.GMAIL_APP_PASSWORD }}
-            subject: "Build/Deployment Failed"
-            body: "The recent CI/CD pipeline failed. Please check the logs for details."
+            subject: "CI/CD Pipeline Notification"
+            body: |
+              The recent CI/CD pipeline has completed.
+              Result: ${{ job.status }}
+              Please check the logs for more details.
             to: duanevanappel@gmail.com
             from: ${{ secrets.GMAIL_USERNAME }}
-
 
