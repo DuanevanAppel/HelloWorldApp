@@ -53,3 +53,4 @@ jobs:
           to: duanevanappel@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
           body: "The CI/CD pipeline has failed. Please check the logs for more details."
+
