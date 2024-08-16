@@ -14,22 +14,25 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # Updated to v3
+        uses: actions/checkout@v3
 
       - name: Set up .NET
-        uses: actions/setup-dotnet@v3  # Updated to v3
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.x'  # Update to your .NET version
+          dotnet-version: '7.x'  
 
       - name: Install dependencies
         run: dotnet restore
+        working-directory: ./HelloWorldApp
 
       - name: Build
         run: dotnet build --configuration Release --no-restore
+        working-directory: ./HelloWorldApp
 
       - name: Test
         run: dotnet test --no-build --verbosity normal
+        working-directory: ./HelloWorldApp
 
       - name: Deploy
         run: echo "Deploy stage - Add your deploy commands here"
-        # Replace with actual deployment commands or actions if needed
+        
