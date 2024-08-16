@@ -42,29 +42,9 @@ jobs:
     if: failure()  # This step runs only if the build fails
 
     steps:
-      - name: Send failure notification to Discord
-        uses: actions/github-script@v6
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1
         with:
-          script: |
-            const fetch = require('node-fetch');
-            const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-            const message = {
-              content: "🚨 CI/CD Pipeline Failed! 🚨\n\nThe CI/CD pipeline has failed. Please check the logs for more details.",
-            };
-
-            fetch(webhookUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(message),
-            }).then(res => {
-              if (!res.ok) {
-                throw new Error(`Failed to send message: ${res.statusText}`);
-              }
-              console.log('Notification sent successfully.');
-            }).catch(err => {
-              console.error('Error sending notification:', err);
-            });
-        env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          channel: '#general'  # Change this to your Slack channel
+          text: "The CI/CD pipeline has failed. Please check the logs for more details."
